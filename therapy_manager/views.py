@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 def index(request):
     return render(request, "therapy_manager/index.html", {})
 
-def login_view(request):
+def login(request):
     if request.method == "POST":
 
         username = request.POST["username"]
