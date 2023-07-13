@@ -2,13 +2,25 @@
 
 {% block body %}
     <div class="row">
-        <div class="class-12">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="col-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Username">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button">Button</button>
+                  <button class="btn btn-outline-secondary" type="button">Next</button>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="password">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <button type="button" class="btn btn-primary">Log in</button>
     </div>
 {% endblock %}

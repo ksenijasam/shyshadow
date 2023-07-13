@@ -1,10 +1,7 @@
 db.sqlite3
+
 shyshadow/__pycache__/
 shyshadow/migrations/
-shyshadow/__pycache__/models.cpython-311.pyc
-shyshadow/__pycache__/admin.cpython-311.pyc
-shyshadow/__pycache__/views.cpython-311.pyc
-shyshadow/__pycache__/urls.cpython-311.pyc
-therapy_manager/__pycache__
 
-therapy_manager/migrations/__pycache__/0001_initial.cpython-311.pyc
+therapy_manager/__pycache__
+therapy_manager/migrations/__pycache__/
