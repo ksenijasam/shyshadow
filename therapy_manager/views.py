@@ -64,5 +64,8 @@ def register(request):
 
 
 def appointments(request):
-    return render(request, "therapy_manager/appointments.html", {})
+    if request.method == "POST":
+        pass
+    else:
+        return render(request, "therapy_manager/appointments.html")
     
