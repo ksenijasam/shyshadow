@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 from .models import User
 
@@ -9,6 +10,7 @@ from .models import User
 
 def index(request):
     return render(request, "therapy_manager/index.html", {})
+
 
 def login_view(request):
     if request.method == "POST":
@@ -63,6 +65,7 @@ def register(request):
         return render(request, "therapy_manager/register.html")
 
 
+@login_required
 def appointments(request):
     if request.method == "POST":
         pass

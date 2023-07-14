@@ -16,6 +16,43 @@
             <button class="btn btn-info" type="button" onclick="createNewAppointment()">Create new appointment</button>
         </div>
     </div>
+
+    <div id="new_appointment">
+        <form action="">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input class="form-control" type="text" id="title">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="user">User</label>
+                        <select class="form-select form-control" name="user" id="user">
+                            <option selected>Users</option>
+                            {% for option in options %}
+                                <option value="{{ option.value }}">{{ option.label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="comment">Comment</label>
+                        <textarea class="form-control" id="comment" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <button class="btn btn-success" type="submit">Create</button>
+            </div>
+        </form>
+    </div>
 </form>
   
 {% endblock %}
