@@ -21,7 +21,8 @@ class Appointment(models.Model):
 
     status = models.CharField(choices=CATEGORY_CHOICES, null=True, blank=True, max_length=10)
     appointment_date = models.DateTimeField(auto_now_add = False, null = True)
-    goal = models.TextField()
+    title = models.CharField(max_length=50)
+    comment = models.TextField()
     client = models.ForeignKey(User, on_delete = models.CASCADE, related_name = 'client_appointment')
     therapist = models.ForeignKey(User, on_delete = models.CASCADE, related_name = 'therapist_appointment')
 

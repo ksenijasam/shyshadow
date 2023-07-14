@@ -61,3 +61,8 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "therapy_manager/register.html")
+
+
+def appointments(request):
+    return render(request, "therapy_manager/appointments.html", {})
+    

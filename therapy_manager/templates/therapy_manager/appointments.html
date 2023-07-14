@@ -1,0 +1,11 @@
+{% extends "therapy_manager/layout.html" %}
+
+{% block body %}
+
+<form>
+    {% csrf_token %}
+    <input type="date"  id="appointment_date" name="appointment_date">
+    <button class="btn btn-info" type="button">Submit</button>
+</form>
+  
+{% endblock %}
