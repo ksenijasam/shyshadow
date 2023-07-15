@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-from .models import User
+from .models import User, Appointment
 
 # Create your views here.
 
@@ -68,7 +68,24 @@ def register(request):
 @login_required
 def appointments(request):
     if request.method == "POST":
-        pass
-    else:
+        appointment = Appointment()
+
+        appointment.status = "new"
+        appointment.appointment_date = request.POST["appointment_date"]
+        appointment.title = request.POST["title"]
+        appointment.comment = request.POST["comment"]
+        appointment.client = User.objects.get(username = request.POST["client"])
+        appointment.therapist = request.user
+
+        appointment.save()
+
         return render(request, "therapy_manager/appointments.html")
+    else:
+        clients = User.objects.filter(is_therapist = False)
+
+        context = {
+            'clients': clients
+        }
+
+        return render(request, "therapy_manager/appointments.html", context)
     

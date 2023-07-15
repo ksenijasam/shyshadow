@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<form>
+<form action="{% url 'appointments' %}" method="POST">
     {% csrf_token %}
     <div class="row">
         <div class="col-2">
@@ -18,22 +18,22 @@
     </div>
 
     <div id="new_appointment">
-        <form action="">
+        <div>
             {% csrf_token %}
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input class="form-control" type="text" id="title">
+                        <input class="form-control" type="text" name="title" id="title">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="user">User</label>
-                        <select class="form-select form-control" name="user" id="user">
-                            <option selected>Users</option>
-                            {% for option in options %}
-                                <option value="{{ option.value }}">{{ option.label }}</option>
+                        <label for="user">Client</label>
+                        <select class="form-select form-control" name="client" id="client">
+                            <option selected>Client</option>
+                            {% for client in clients %}
+                                <option value="{{ client }}">{{ client }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -43,7 +43,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="comment">Comment</label>
-                        <textarea class="form-control" id="comment" rows="3"></textarea>
+                        <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
             <div class="row">
                 <button class="btn btn-success" type="submit">Create</button>
             </div>
-        </form>
+        </div>
     </div>
 </form>
   
