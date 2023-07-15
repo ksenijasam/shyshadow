@@ -64,9 +64,16 @@
                 {% if forloop.counter0|divisibleby:3 %}
                 </tr><tr>
                 {% endif %}
-                <td>
+                <td 
+                    onclick="viewAppointment('{{ appointment.client }}', '{{ appointment.appointment_date }}', '{{ appointment.title }}', '{{ appointment.comment }}')" 
+                    class="cursor-pointer">
                     <div class="jumbotron jumbotron-fluid">
                         <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    {{ appointment.client}}
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-12">
                                     {{ appointment.appointment_date}}

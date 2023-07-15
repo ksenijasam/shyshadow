@@ -25,3 +25,7 @@ function createNewAppointment() {
 
     newAppointment.style.display = 'block';
 };
+
+function viewAppointment(client, date, title,comment) {
+    console.log(title);
+}
