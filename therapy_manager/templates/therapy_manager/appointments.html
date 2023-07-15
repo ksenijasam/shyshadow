@@ -69,14 +69,22 @@
                     class="cursor-pointer">
                     <div class="jumbotron jumbotron-fluid">
                         <div class="container">
-                            <div class="row">
-                                <div class="col-12">
-                                    {{ appointment.client}}
+                            {% if request.user.is_therapist %}
+                                <div class="row">
+                                    <div class="col-12">
+                                        with: {{ appointment.client}}
+                                    </div>
                                 </div>
-                            </div>
+                            {% else %}
+                                <div class="row">
+                                    <div class="col-12">
+                                        with: {{ appointment.therapist }}
+                                    </div>
+                                </div>
+                            {% endif %}
                             <div class="row">
                                 <div class="col-12">
-                                    {{ appointment.appointment_date}}
+                                    on: {{ appointment.appointment_date}}
                                 </div>
                             </div>
                             <div class="row">
