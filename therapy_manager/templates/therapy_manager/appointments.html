@@ -12,9 +12,11 @@
         <div class="col-2">
             <button class="btn btn-info" type="button">Filter</button>
         </div>
-        <div class="col-8">
-            <button class="btn btn-info" type="button" onclick="createNewAppointment()">Create new appointment</button>
-        </div>
+        {% if request.user.is_therapist or request.user.username == 'admin' %}
+            <div class="col-8">
+                <button class="btn btn-info" type="button" onclick="createNewAppointment()">Create new appointment</button>
+            </div>
+        {% endif %}
     </div>
 
     <div id="new_appointment">
