@@ -58,9 +58,36 @@
 </form>
 
 <div class="row">
-    {% for appointment in appointments %}
-        <div>{{ appointment }}</div>
-    {% endfor %}
+    <table>
+        <tr>
+            {% for appointment in appointments %}
+                {% if forloop.counter0|divisibleby:3 %}
+                </tr><tr>
+                {% endif %}
+                <td>
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    {{ appointment.appointment_date}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3>
+                                        {{ appointment.title }}
+                                    </h3>
+                                    <p>
+                                        {{ appointment.comment }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            {% endfor %}
+        </tr>
+      </table>
 </div>
   
 {% endblock %}
