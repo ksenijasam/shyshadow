@@ -67,6 +67,9 @@ def register(request):
 
 @login_required
 def appointments(request):
+    clients = User.objects.filter(is_therapist = False)
+    appoinments = Appointment.objects.all()
+
     if request.method == "POST":
         appointment = Appointment()
 
@@ -79,13 +82,10 @@ def appointments(request):
 
         appointment.save()
 
-        return render(request, "therapy_manager/appointments.html")
-    else:
-        clients = User.objects.filter(is_therapist = False)
+    context = {
+        'appointments':appoinments,
+        'clients': clients
+    }
 
-        context = {
-            'clients': clients
-        }
-
-        return render(request, "therapy_manager/appointments.html", context)
+    return render(request, "therapy_manager/appointments.html", context)
     

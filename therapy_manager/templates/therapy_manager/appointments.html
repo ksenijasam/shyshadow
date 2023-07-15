@@ -6,7 +6,7 @@
     {% csrf_token %}
     <div class="row">
         <div class="col-2">
-            <input type="date" id="appointment_date" name="appointment_date" onclick="dateInputClicked()">
+            <input type="datetime-local" id="appointment_date" name="appointment_date" onclick="dateInputClicked()">
             <span id="date_required">Please pick date</span>
         </div>
         <div class="col-2">
@@ -56,5 +56,11 @@
         </div>
     </div>
 </form>
+
+<div class="row">
+    {% for appointment in appointments %}
+        <div>{{ appointment }}</div>
+    {% endfor %}
+</div>
   
 {% endblock %}
