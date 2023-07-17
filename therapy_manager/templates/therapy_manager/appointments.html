@@ -42,15 +42,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="comment">Comment</label>
-                        <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
                 <button class="btn btn-success" type="submit">Create</button>
             </div>
         </div>
@@ -109,8 +100,11 @@
     <div id="appointmentDetailsModal" class="modal">
 
     <div class="modal-content">
-        <span id="closeModal" class="close">&times;</span>
-        <p>Some text in the Modal..</p>
+        <div>
+            <span id="closeModal" class="close float-right">&times;</span>
+        </div>
+        
+        <div id="appointmentDetails"></div>
     </div>
 
     </div>

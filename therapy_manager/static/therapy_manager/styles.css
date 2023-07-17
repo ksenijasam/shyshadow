@@ -3,7 +3,7 @@ body {
 }
 
 .cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal {
@@ -33,5 +33,9 @@ body {
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+  }
+
+  .float-right {
+    float: right;
   }
   

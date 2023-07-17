@@ -3,6 +3,7 @@ var requiredDateText = document.getElementById("date_required");
 var newAppointment = document.getElementById("new_appointment");
 var appointmentDetailsModal = document.getElementById("appointmentDetailsModal");
 var closeModal = document.getElementById("closeModal");
+var appointmentDetails = document.getElementById("appointmentDetails");
 
 document.addEventListener('DOMContentLoaded', function() {
     requiredDateText.style.display = 'none';
@@ -30,7 +31,26 @@ function createNewAppointment() {
 
 function viewAppointment(client, date, title,comment) {
     appointmentDetailsModal.style.display = "block";
-    console.log(title);
+    appointmentDetails.innerHTML = `
+    <h1>${title}</h1>
+    <div>
+        <p>Appointment date: ${date}</p>
+        <p>${comment}</p>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="isMeetingCanceled" onclick="cancelationReason()">
+            <label class="form-check-label" for="isMeetingCanceled" onclick="cancelationReason()">
+                Cancel meeting ?
+            </label>
+        </div>
+        <div class="row" id="cancelComment" style="display: none;">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="comment">Would you like to leave cnacelation reason ?</label>
+                    <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>`
 };
 
 closeModal.onclick = function() {
@@ -41,4 +61,14 @@ window.onclick = function(event) {
     if (event.target == appointmentDetailsModal) {
         appointmentDetailsModal.style.display = "none";
     };
+};
+
+function cancelationReason() {
+    var cancelComment = document.getElementById("cancelComment");
+
+    if (isMeetingCanceled.checked) {
+        cancelComment.style.display = "block";
+    } else {
+        cancelComment.style.display = "none";
+    }
 };
