@@ -46,7 +46,7 @@ function viewAppointment(client, date, title,comment) {
             <div class="col-6">
                 <div class="form-group">
                     <label for="comment">Would you like to leave cnacelation reason ?</label>
-                    <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+                    <textarea class="form-control" name="cancelComment" id="cancelComment" rows="3"></textarea>
                 </div>
             </div>
         </div>
