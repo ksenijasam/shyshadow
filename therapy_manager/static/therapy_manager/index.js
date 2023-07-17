@@ -49,6 +49,9 @@ function viewAppointment(client, date, title,comment) {
                     <textarea class="form-control" name="cancelComment" id="cancelComment" rows="3"></textarea>
                 </div>
             </div>
+            <div class="col-6">
+                <button class="btn btn-danger" type="button" onclick="cnacelCanceling()"> Cancel</button>
+            </div>
         </div>
     </div>`
 };
@@ -63,6 +66,7 @@ window.onclick = function(event) {
     };
 };
 
+
 function cancelationReason() {
     var cancelComment = document.getElementById("cancelComment");
 
@@ -72,3 +76,8 @@ function cancelationReason() {
         cancelComment.style.display = "none";
     }
 };
+
+function cnacelCanceling() {
+    document.getElementById("cancelComment").style.display = "none";
+    isMeetingCanceled.checked = false;
+}
