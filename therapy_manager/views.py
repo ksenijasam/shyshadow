@@ -76,7 +76,6 @@ def appointments(request):
         appointment.status = "new"
         appointment.appointment_date = request.POST["appointment_date"]
         appointment.title = request.POST["title"]
-        appointment.comment = request.POST["comment"]
         appointment.client = User.objects.get(username = request.POST["client"])
         appointment.therapist = request.user
 
