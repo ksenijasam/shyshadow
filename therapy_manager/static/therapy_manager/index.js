@@ -29,7 +29,11 @@ function createNewAppointment() {
     newAppointment.style.display = 'block';
 };
 
-function viewAppointment(client, date, title,comment) {
+var appointmentID = null;
+
+function viewAppointment(id, client, date, title, comment, status) {
+    appointmentID = id;
+
     appointmentDetailsModal.style.display = "block";
     appointmentDetails.innerHTML = `
     <h1>${title}</h1>
@@ -49,8 +53,11 @@ function viewAppointment(client, date, title,comment) {
                     <textarea class="form-control" name="cancelComment" id="cancelComment" rows="3"></textarea>
                 </div>
             </div>
-            <div class="col-6">
-                <button class="btn btn-danger" type="button" onclick="cnacelCanceling()"> Cancel</button>
+            <div class="col-3">
+                <button class="btn btn-danger" type="submit" onclick="cnacelCanceling()"> Cancel</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-info" type="button" onclick="cnacelCanceling()"> Dismiss</button>
             </div>
         </div>
     </div>`
@@ -80,4 +87,42 @@ function cancelationReason() {
 function cnacelCanceling() {
     document.getElementById("cancelComment").style.display = "none";
     isMeetingCanceled.checked = false;
+
+    try {
+        const csrftoken = getCookie('csrftoken');
+        const headers = {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
+        };
+
+        fetch('/appointments/' + appointmentID, {
+            method: 'POST',
+            headers: headers
+        }) 
+        .then((response) => response.json())
+        .then(response => {
+            if(response.message === 'Successfully canceled appointment') {
+                window.location.reload();
+            };
+        });
+    }
+    catch {
+        alert('Error occured, please try again.');
+    }
+};
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }

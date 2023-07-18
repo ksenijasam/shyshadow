@@ -4,6 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
+from django.http import JsonResponse
+
 from .models import User, Appointment
 
 # Create your views here.
@@ -66,11 +68,11 @@ def register(request):
 
 
 @login_required
-def appointments(request):
+def appointments(request, id = None):
     clients = User.objects.filter(is_therapist = False)
     appoinments = Appointment.objects.all()
 
-    if request.method == "POST":
+    if request.method == "POST" and id is None:
         appointment = Appointment()
 
         appointment.status = "new"
@@ -80,6 +82,17 @@ def appointments(request):
         appointment.therapist = request.user
 
         appointment.save()
+    elif id:
+        appointment = Appointment.objects.get(pk = id)
+        appointment.status = 'canceled'
+
+        appointment.save()
+
+        context = {
+            'message': 'Successfully canceled appointment'
+        }
+
+        return JsonResponse(context, status=200)
 
     context = {
         'appointments':appoinments,
