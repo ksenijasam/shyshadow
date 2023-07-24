@@ -4,10 +4,12 @@ var newAppointment = document.getElementById("new_appointment");
 var appointmentDetailsModal = document.getElementById("appointmentDetailsModal");
 var closeModal = document.getElementById("closeModal");
 var appointmentDetails = document.getElementById("appointmentDetails");
+var cancelAlert = document.getElementById("cancelAlert");
 
 document.addEventListener('DOMContentLoaded', function() {
     requiredDateText.style.display = 'none';
     newAppointment.style.display = 'none';
+    cancelAlert.style.display = 'none';
 });
 
 function dateInputClicked() {
@@ -32,6 +34,13 @@ function createNewAppointment() {
 var appointmentID = null;
 
 function viewAppointment(id, client, date, title, comment, status) {
+
+    if(status === 'canceled') {
+        cancelAlert.style.display = 'block';
+
+        return;
+    };
+
     appointmentID = id;
 
     appointmentDetailsModal.style.display = "block";
@@ -126,3 +135,7 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
+cancelAlert.addEventListener('click', () => {
+    cancelAlert.style.display = 'none';
+});

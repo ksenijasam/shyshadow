@@ -99,20 +99,22 @@
       </table>
 </div>
 
-{% if appointment.status == 'canceled' %}
-    <div>
-        <div id="appointmentDetailsModal" class="modal">
+<div>
+    <div id="appointmentDetailsModal" class="modal">
 
-        <div class="modal-content">
-            <div>
-                <span id="closeModal" class="close float-right">&times;</span>
-            </div>
+    <div class="modal-content">
+        <div>
+            <span id="closeModal" class="close float-right">&times;</span>
+        </div>
             
-            <div id="appointmentDetails"></div>
-        </div>
-
-        </div>
+        <div id="appointmentDetails"></div>
     </div>
-{% endif %}
-  
+
+    </div>
+</div>
+
+<div class="alert alert-danger cursor-pointer" role="alert" id="cancelAlert">
+  Meeting has been canceled, please contact canceler if you need more information.  
+</div>
+
 {% endblock %}
