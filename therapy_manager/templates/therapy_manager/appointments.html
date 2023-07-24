@@ -99,18 +99,20 @@
       </table>
 </div>
 
-<div>
-    <div id="appointmentDetailsModal" class="modal">
+{% if appointment.status == 'canceled' %}
+    <div>
+        <div id="appointmentDetailsModal" class="modal">
 
-    <div class="modal-content">
-        <div>
-            <span id="closeModal" class="close float-right">&times;</span>
+        <div class="modal-content">
+            <div>
+                <span id="closeModal" class="close float-right">&times;</span>
+            </div>
+            
+            <div id="appointmentDetails"></div>
         </div>
-        
-        <div id="appointmentDetails"></div>
-    </div>
 
+        </div>
     </div>
-</div>
+{% endif %}
   
 {% endblock %}
