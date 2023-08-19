@@ -100,4 +100,10 @@ def appointments(request, id = None):
     }
 
     return render(request, "therapy_manager/appointments.html", context)
+
+
+@login_required
+def diary(request):
+    return render(request, "therapy_manager/diary.html")
+    
     
