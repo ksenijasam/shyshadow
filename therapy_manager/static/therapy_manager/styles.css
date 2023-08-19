@@ -38,4 +38,19 @@ body {
   .float-right {
     float: right;
   }
+
+  .width-80-percent {
+    width: 80%;
+  }
+
+  .margin-top-20 {
+    margin-top: 20px;
+  }
+
+  .flexify-thingz-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
   

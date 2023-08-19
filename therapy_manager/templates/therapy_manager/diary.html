@@ -5,7 +5,14 @@
         <div class="col-2">
             <input type="datetime-local" id="diary_entry_date" name="diary_entry_date" onclick="dateDiaryEntryClicked()">
             <span id="diary_date_required">Please pick date</span>
-            <button class="btn btn-info" onclick="addDiaryEntry()">Add entry</button>
+            <button class="btn btn-info" onclick="addDiaryEntry()" id="entry_button">Add entry</button>
+        </div>
+    </div>
+
+    <div class="row margin-top-20 flexify-thingz-column">
+        <h1 id="diary_entry_title">Dear diary,</h1>
+        <div class="form-groupn width-80-percent">
+            <textarea class="form-control" id="diary_entry" rows="20"></textarea>
         </div>
     </div>
 {% endblock %}

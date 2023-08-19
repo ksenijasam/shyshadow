@@ -7,6 +7,9 @@ var appointmentDetails = document.getElementById("appointmentDetails");
 var cancelAlert = document.getElementById("cancelAlert");
 var requiredDiaryDateText = document.getElementById("diary_date_required");
 var diaryEntryDateInput = document.getElementById("diary_entry_date");
+var diaryEntry = document.getElementById("diary_entry");
+var diaryEntryTitle = document.getElementById("diary_entry_title");
+var diaryEntryButton = document.getElementById("entry_button");
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -14,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
     newAppointment ? newAppointment.style.display = 'none' : null;
     cancelAlert ? cancelAlert.style.display = 'none' : null;
     requiredDiaryDateText ? requiredDiaryDateText.style.display = 'none' : null;
+    diaryEntry ? diaryEntry.style.display = 'none' : null;
+    diaryEntryTitle ? diaryEntryTitle.style.display = 'none' : null;
+    diaryEntryButton ? diaryEntryButton.style.display = 'block' : null;
 });
 
 function dateInputClicked() {
@@ -151,6 +157,10 @@ function addDiaryEntry() {
 
         return;
     };
+
+    diaryEntry.style.display = 'block';
+    diaryEntryTitle.style.display = 'block';
+    diaryEntryButton.style.display = 'none';
     
 };
 
