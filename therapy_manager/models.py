@@ -28,3 +28,12 @@ class Appointment(models.Model):
 
     def __str__(self):
         return f"{self.client} has appointment {self.appointment_date} with {self.therapist}, status {self.status}"
+
+
+class  Diary(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE, null=True, related_name = 'user_diary')
+    entry =  models.TextField()
+    entry_date = models.DateTimeField(auto_now_add = False, null = True)
+
+    def __str__(self):
+        return f"{self.user} has added diary entry on {self.entry_date}"
