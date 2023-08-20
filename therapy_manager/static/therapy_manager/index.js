@@ -8,7 +8,6 @@ var cancelAlert = document.getElementById("cancelAlert");
 var requiredDiaryDateText = document.getElementById("diary_date_required");
 var diaryEntryDateInput = document.getElementById("diary_entry_date");
 var diaryEntry = document.getElementById("diary_entry");
-var diaryEntryTitle = document.getElementById("diary_entry_title");
 var diaryEntryButton = document.getElementById("entry_button");
 
 
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
     cancelAlert ? cancelAlert.style.display = 'none' : null;
     requiredDiaryDateText ? requiredDiaryDateText.style.display = 'none' : null;
     diaryEntry ? diaryEntry.style.display = 'none' : null;
-    diaryEntryTitle ? diaryEntryTitle.style.display = 'none' : null;
     diaryEntryButton ? diaryEntryButton.style.display = 'block' : null;
 });
 
@@ -159,7 +157,6 @@ function addDiaryEntry() {
     };
 
     diaryEntry.style.display = 'block';
-    diaryEntryTitle.style.display = 'block';
     diaryEntryButton.style.display = 'none';
     
 };
