@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.http import JsonResponse
 
-from .models import User, Appointment
+from .models import User, Appointment, Diary
 
 # Create your views here.
 
@@ -104,6 +104,17 @@ def appointments(request, id = None):
 
 @login_required
 def diary(request):
-    return render(request, "therapy_manager/diary.html")
+    if request.method == 'POST':
+        new_diary_entry = Diary()
+
+        new_diary_entry.user = request.user
+        new_diary_entry.entry = request.POST["diary_entry"]
+        new_diary_entry.entry_date = request.POST["diary_entry_date"]
+
+        new_diary_entry.save()
+
+        return render(request, "therapy_manager/diary.html")
+    else:
+        return render(request, "therapy_manager/diary.html")
     
     
