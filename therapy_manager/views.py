@@ -95,7 +95,7 @@ def appointments(request, id = None):
         return JsonResponse(context, status=200)
 
     context = {
-        'appointments':appoinments,
+        'appointments': appoinments,
         'clients': clients
     }
 
@@ -119,8 +119,12 @@ def diary(request):
 
 @login_required
 def diary_entries(request):
-    entries = Diary.objects.get(user = request.user)
+    entries = Diary.objects.filter(user = request.user).order_by('-entry_date') 
 
-    return render(request, "therapy_manager/diary_entries.html")
+    context = {
+        'entries': entries
+    }
+
+    return render(request, "therapy_manager/diary_entries.html", context)
     
     
