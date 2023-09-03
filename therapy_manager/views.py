@@ -116,5 +116,11 @@ def diary(request):
         return render(request, "therapy_manager/diary.html")
     else:
         return render(request, "therapy_manager/diary.html")
+
+@login_required
+def diary_entries(request):
+    entries = Diary.objects.get(user = request.user)
+
+    return render(request, "therapy_manager/diary_entries.html")
     
     
