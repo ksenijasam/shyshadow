@@ -129,4 +129,20 @@ def diary_entries(request):
 
 @login_required
 def goals(request): 
-    return render(request, "therapy_manager/goals.html")
+    if request.method == 'POST':
+        goal = Goal()
+
+        goal.user = request.user
+        goal.goal = request.POST["goalText"]
+
+        goal.save()
+        
+        goals = Goal.objects.filter(user = request.user).order_by('-goal_date') 
+
+        context = {
+            'goals': goals
+        }
+
+        return render(request, "therapy_manager/goals.html", context)
+    else:
+        return render(request, "therapy_manager/goals.html")

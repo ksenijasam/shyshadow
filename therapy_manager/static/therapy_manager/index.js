@@ -190,7 +190,7 @@ function addGoal() {
     <div>
         <textarea class="form-control" name="goalText" id="goalText" rows="3"></textarea>
         <div>
-            <button class="btn btn-info" type="button" onclick="saveGoal()">Save</button>
+            <button class="btn btn-info" type="submit">Save</button>
         </div>
     </div>`
 };
