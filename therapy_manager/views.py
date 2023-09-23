@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.http import JsonResponse
 
-from .models import User, Appointment, Diary
+from .models import User, Appointment, Diary, Goal
 
 # Create your views here.
 
@@ -126,5 +126,7 @@ def diary_entries(request):
     }
 
     return render(request, "therapy_manager/diary_entries.html", context)
-    
-    
+
+@login_required
+def goals(request): 
+    return render(request, "therapy_manager/goals.html")

@@ -9,7 +9,9 @@ var requiredDiaryDateText = document.getElementById("diary_date_required");
 var diaryEntryDateInput = document.getElementById("diary_entry_date");
 var diaryEntry = document.getElementById("diary_entry");
 var diaryEntryButton = document.getElementById("entry_button");
-
+var goalsModal = document.getElementById("goalsModal");
+var goalsModalContent = document.getElementById("goalsModalContent");
+var closeGoalsModal = document.getElementById("closeGoalsModal");
 
 document.addEventListener('DOMContentLoaded', function () {
     requiredDateText ? requiredDateText.style.display = 'none' : null;
@@ -80,13 +82,25 @@ function viewAppointment(id, client, date, title, comment, status) {
     </div>`
 };
 
-closeModal.onclick = function() {
-    appointmentDetailsModal.style.display = "none";
+if (closeModal) {
+    closeModal.onclick = function () {
+        appointmentDetailsModal.style.display = "none";
+    };
+};
+
+if (closeGoalsModal) {
+    closeGoalsModal.onclick = function () {
+        goalsModal.style.display = "none";
+    };
 };
 
 window.onclick = function(event) {
     if (event.target == appointmentDetailsModal) {
         appointmentDetailsModal.style.display = "none";
+    };
+
+    if (event.target == goalsModal) {
+        goalsModal.style.display = "none";
     };
 };
 
@@ -144,9 +158,11 @@ function getCookie(name) {
     return cookieValue;
 }
 
-cancelAlert.addEventListener('click', () => {
-    cancelAlert.style.display = 'none';
-});
+if (cancelAlert) {
+    cancelAlert.addEventListener('click', () => {
+        cancelAlert.style.display = 'none';
+    });
+};
 
 function addDiaryEntry() {
 
@@ -163,4 +179,18 @@ function addDiaryEntry() {
 
 function dateDiaryEntryClicked() {
     requiredDiaryDateText.style.display = 'none';
+};
+
+
+function addGoal() {
+    goalsModal.style.display = 'block';
+
+    goalsModalContent.innerHTML = `
+    <h1>Goal</h1>
+    <div>
+        <textarea class="form-control" name="goalText" id="goalText" rows="3"></textarea>
+        <div>
+            <button class="btn btn-info" type="button" onclick="saveGoal()">Save</button>
+        </div>
+    </div>`
 };
