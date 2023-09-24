@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
@@ -155,27 +155,10 @@ def goals(request):
 
 
 @login_required
-def goals_status(request): 
-    if request.method == 'POST':
+def goals_status(request, id): 
+    goal = get_object_or_404(Goal, pk=id)
 
-        # for goal in goals:
-        #     print(goal)
-            # completed = request.POST.get(f"goal_{goal_pk}")
+    goal.completed = not goal.completed 
 
-            # if completed == "true":
-            #     goal.completed = True
-            # else:
-            #     goal.completed = False
+    goal.save()
 
-            # goal.save()
-
-         for key, value in request.POST.items():
-            print(f"{key}: {value}")
-
-        # goals = Goal.objects.filter(user = request.user).order_by('-goal_date') 
-
-        # context = {
-        #     'goals': goals
-        # }
-
-        # return render(request, "therapy_manager/goals.html", context)

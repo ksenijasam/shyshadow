@@ -26,14 +26,16 @@
     
     </form>
 
-    <form action="{% url 'goals_status' %}" method="post">
+    <div>
         {% csrf_token %}
 
         <div class="row">
             <div class="col-md-10">
                 {% for goal in goals %}
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="{{ goal.completed }}" id="{{ goal.pk }}" name="{{ goal.pk }}" >
+                        <input class="form-check-input" type="checkbox" {% if goal.completed %}checked="checked" {% endif %} id="{{ goal.pk }}"
+                            name="{{ goal.pk }}" onclick="saveCompletedGoals('{{ goal.pk }}')">
+
                         <label class="form-check-label" for="{{ goal.pk }}">
                             {{ goal.goal }}
                         </label>
@@ -41,11 +43,6 @@
                 {% endfor %}
             </div>
         </div>
-        
-        {% if goals %}
-            <button class="btn btn-info" type="submit">
-                Save
-            </button>
-        {% endif %}
-    </form>
+    
+    </div>
 {% endblock %}

@@ -12,5 +12,5 @@ urlpatterns = [
     path("diary", views.diary, name="diary"),
     path("diary_entries", views.diary_entries, name="diary_entries"),
     path("goals", views.goals, name="goals"),
-    path("goals_status", views.goals_status, name="goals_status"),
+    path("goals_status/<int:id>", views.goals_status, name="goals_status"),
 ]
