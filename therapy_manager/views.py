@@ -145,4 +145,37 @@ def goals(request):
 
         return render(request, "therapy_manager/goals.html", context)
     else:
-        return render(request, "therapy_manager/goals.html")
+        goals = Goal.objects.filter(user = request.user).order_by('-goal_date') 
+
+        context = {
+            'goals': goals
+        }
+
+        return render(request, "therapy_manager/goals.html", context)
+
+
+@login_required
+def goals_status(request): 
+    if request.method == 'POST':
+
+        # for goal in goals:
+        #     print(goal)
+            # completed = request.POST.get(f"goal_{goal_pk}")
+
+            # if completed == "true":
+            #     goal.completed = True
+            # else:
+            #     goal.completed = False
+
+            # goal.save()
+
+         for key, value in request.POST.items():
+            print(f"{key}: {value}")
+
+        # goals = Goal.objects.filter(user = request.user).order_by('-goal_date') 
+
+        # context = {
+        #     'goals': goals
+        # }
+
+        # return render(request, "therapy_manager/goals.html", context)
